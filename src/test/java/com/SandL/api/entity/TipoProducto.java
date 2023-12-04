@@ -19,42 +19,49 @@ import jakarta.validation.constraints.NotNull;
 public class TipoProducto{
 
 	@Id
-	@Column(name = "idTipoProducto", unique=true)
+	@Column(name = "id_tipo_producto", unique=true)
 	@JsonProperty("id_tipo_producto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idTipoProducto;
+	private Integer id_tipo_producto;
     
 	@Column(name="tipo")
 	@NotNull(message="El tipo es requerido")
 	//@JsonProperty("tipo")
     private String tipo;
 
-    /* Status del tipo del producto. */
+    /* Status del tipo del producto . */
 	@Column(name="status")
 	@Min(value = 0, message="El status debe de ser 1 o 0.")
 	@Min(value = 1, message="El status debe de ser 1 o 0.")
 	@JsonProperty("status")
-	
-    private Integer status;
-    
-	public Long getIdTipoProducto() {
-		return idTipoProducto;
-	}
+	private Integer status;
 
 	@Override
 	public String toString() {
-		return "TipoProducto [idTipoProducto=" + idTipoProducto + ", tipo=" + tipo + ", status=" + status + "]";
+		return "TipoProducto [id_tipo_producto=" + id_tipo_producto + ", tipo=" + tipo + ", status=" + status + "]";
+	}
+
+	public Integer getId_tipo_producto() {
+		return id_tipo_producto;
 	}
 
 	public String getTipo() {
 		return tipo;
 	}
 
-	public void setIdTipoProducto(Long idTipoProducto) {
-		this.idTipoProducto = idTipoProducto;
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setId_tipo_producto(Integer id_tipo_producto) {
+		this.id_tipo_producto = id_tipo_producto;
 	}
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 }

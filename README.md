@@ -13,7 +13,7 @@ ntory@flavor:~/Escritorio/CC/20241/Technologies-for-internet-dev/API-SandL$ dock
  ✔ Container api-sandl-postgres-1  Started       
 ```
 
-Para verificar que se ha creado solo hay que ejecutar:
+Para verificar que se ha creado nuestro contenedor usado para neustra DB solo hay que ejecutar:
 ```                                                                                 5.1s 
 ntory@flavor:~/Escritorio/CC/20241/Technologies-for-internet-dev/API-SandL$ docker ps
 CONTAINER ID   IMAGE                COMMAND                  CREATED         STATUS         PORTS                                         NAMES
@@ -33,7 +33,6 @@ psql (15.5 (Debian 15.5-0+deb12u1), servidor 14.9)
 Digite «help» para obtener ayuda.
 
 SandL=# exit
-
 ```
 	-
 ```
