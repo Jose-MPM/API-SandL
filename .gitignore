@@ -1,6 +1,7 @@
-HELP.md
 target/
 bin/
+
+# Archivos y directorios especificos que no deben ser ignorados
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -32,3 +33,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignorar archivos de construcción específicos de Maven
+bin/
+!**/src/main/java/
+!**/src/test/java/
+
+# Ignorar archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
