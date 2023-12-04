@@ -14,11 +14,10 @@ ntory@flavor:~/Escritorio/CC/20241/Technologies-for-internet-dev/API-SandL$ dock
 ```
 
 Para verificar que se ha creado nuestro contenedor usado para neustra DB solo hay que ejecutar:
-```                                                                                 5.1s 
+```
 ntory@flavor:~/Escritorio/CC/20241/Technologies-for-internet-dev/API-SandL$ docker ps
 CONTAINER ID   IMAGE                COMMAND                  CREATED         STATUS         PORTS                                         NAMES
 14a415188143   postgres:14-alpine   "docker-entrypoint.s…"   8 seconds ago   Up 2 seconds   0.0.0.0:31123->5432/tcp, :::31123->5432/tcp   api-sandl-postgres-1
-
 ```
 
 ### Postgrest
@@ -34,9 +33,62 @@ Digite «help» para obtener ayuda.
 
 SandL=# exit
 ```
-	-
+
+- Para usar en la DB
+
 ```
-asd
+ntory@flavor:~/Escritorio/CC/20241/Technologies-for-internet-dev/API-SandL$ psql -h localhost -U main -d SandL -p 32124
+Contraseña para usuario main: 
+psql (15.5 (Debian 15.5-0+deb12u1), servidor 14.9)
+Digite «help» para obtener ayuda.
+
+SandL=# \dt
+No se encontró ninguna relación.
+SandL=# \dt;
+No se encontró ninguna relación.
+SandL=# \d;
+orden \d; no válida
+Digite \? para obtener ayuda.
+SandL=# \d
+No se encontró ninguna relación.
+SandL=# \d
+                      Listado de relaciones
+ Esquema |               Nombre               |   Tipo    | Dueño 
+---------+------------------------------------+-----------+-------
+ public  | tipo_producto                      | tabla     | main
+ public  | tipo_producto_id_tipo_producto_seq | secuencia | main
+(2 filas)
+
+SandL=# \dt
+          Listado de relaciones
+ Esquema |    Nombre     | Tipo  | Dueño 
+---------+---------------+-------+-------
+ public  | tipo_producto | tabla | main
+(1 fila)
+
+SandL=# \d tipo_producto
+                                                 Tabla «public.tipo_producto»
+     Columna      |          Tipo          | Ordenamiento | Nulable  |                       Por omisión                       
+------------------+------------------------+--------------+----------+---------------------------------------------------------
+ id_tipo_producto | integer                |              | not null | nextval('tipo_producto_id_tipo_producto_seq'::regclass)
+ status           | integer                |              |          | 
+ tipo             | character varying(255) |              |          | 
+Índices:
+    "tipo_producto_pkey" PRIMARY KEY, btree (id_tipo_producto)
+
+SandL=# select * from tipo_producto
+SandL-# ;
+ id_tipo_producto | status | tipo 
+------------------+--------+------
+(0 filas)
+
+SandL=# select * from tipo_producto
+;
+ id_tipo_producto | status | tipo 
+------------------+--------+------
+(0 filas)
+
+SandL=# 
 ```
 
 También se puede utilizar cualquier otro servidor que al que se tenga acceso, solo hay que

@@ -26,7 +26,7 @@ public class TipoProducto{
     
 	@Column(name="tipo")
 	@NotNull(message="El tipo es requerido")
-	//@JsonProperty("tipo")
+	@JsonProperty("tipo")
     private String tipo;
 
     /* Status del tipo del producto . */

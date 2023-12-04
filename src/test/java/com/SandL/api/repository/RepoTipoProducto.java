@@ -49,8 +49,10 @@ public interface RepoTipoProducto extends JpaRepository<TipoProducto, Integer> {
 	 * Buscar los TipoProductos con este tipo.
 	 * @return el TIPO PRODUCTO del en nuestra base.
 	 */
+	@Transactional 
+	@Modifying
 	@Query(value= "INSERT INTO tipo_producto (tipo) VALUES(:tipo, 1)", nativeQuery = true)
-	TipoProducto createTipoProducto(@Param("tipo") String tipo); // nos devolvera el TipoProducto que estamos insertando
+	void createTipoProducto(@Param("tipo") String tipo); // nos devolvera el TipoProducto que estamos insertando
 	
 	/**
 	 * Buscar los TipoProductos con este tipo.

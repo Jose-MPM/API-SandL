@@ -1,5 +1,5 @@
 /* psql -h localhost -U postgres */
 /* ======== Tipos de PRODUCTOS ======== */
-insert into tipo_producto (tipo) values ('Perecedero');
-insert into tipo_producto (tipo) values ('Para empacar');
-insert into tipo_producto (tipo) values ('No perecedero');
+insert into tipo_producto (tipo, status) values ('Perecedero',1);
+insert into tipo_producto (tipo, status) values ('Para empacar',1);
+insert into tipo_producto (tipo, status) values ('No perecedero',1);

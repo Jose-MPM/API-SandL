@@ -40,22 +40,24 @@ public class SvcTipoProductoImp implements SvcTipoProducto {
 	@Override
 	public String updateTipoProducto(Integer id_tipo_producto, TipoProducto tipoProducto) {
 		TipoProducto tipoProductoSaved = (TipoProducto) repo.findByTipoProductoId(tipoProducto.getId_tipo_producto());
+		String message = "";
 		if(tipoProductoSaved == null) {
-			return "El Tipo producto que intentas actualizar no existe.";
+			message = "El Tipo producto que intentas actualizar no existe.";
 		}
 		if(tipoProductoSaved != null) {
 			if(tipoProductoSaved.getStatus() == 0)
-				return "El Tipo producto que intentas actualizar no esta activo.";
+				message =  "El Tipo producto que intentas actualizar no esta activo.";
 			else {
 				tipoProductoSaved = (TipoProducto) repo.findByTipoProducto(tipoProducto.getTipo());
 				if(tipoProductoSaved != null) {
 					// es importante notar que no podemos tener dos tipos productos con el mismo tipo
-					return "El Tipo Producto que quieres actualizar ya existe."; 
+					message = "El Tipo Producto que quieres actualizar ya existe."; 
 				}
 				repo.updateTipoProducto(tipoProducto.getId_tipo_producto(), tipoProducto.getTipo());
-				return "Tipo Producto Actualizado";
+				message = "Tipo Producto Actualizado";
 			}
 		}
+		return message;
 	}
 
 	@Override
