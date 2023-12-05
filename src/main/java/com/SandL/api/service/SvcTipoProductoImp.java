@@ -39,7 +39,7 @@ public class SvcTipoProductoImp implements SvcTipoProducto {
 
 	@Override
 	public String updateTipoProducto(Integer id_tipo_producto, TipoProducto tipoProducto) {
-		TipoProducto tipoProductoSaved = (TipoProducto) repo.findByTipoProductoId(tipoProducto.getId_tipo_producto());
+		TipoProducto tipoProductoSaved = (TipoProducto) repo.findByTipoProductoId(id_tipo_producto);
 		String message = "";
 		if(tipoProductoSaved == null) {
 			message = "El Tipo producto que intentas actualizar no existe.";
@@ -53,7 +53,7 @@ public class SvcTipoProductoImp implements SvcTipoProducto {
 					// es importante notar que no podemos tener dos tipos productos con el mismo tipo
 					message = "El Tipo Producto que quieres actualizar ya existe."; 
 				}
-				repo.updateTipoProducto(tipoProducto.getId_tipo_producto(), tipoProducto.getTipo());
+				repo.updateTipoProducto(id_tipo_producto, tipoProducto.getTipo());
 				message = "Tipo Producto Actualizado";
 			}
 		}

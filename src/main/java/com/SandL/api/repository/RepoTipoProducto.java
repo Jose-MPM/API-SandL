@@ -51,7 +51,7 @@ public interface RepoTipoProducto extends JpaRepository<TipoProducto, Integer> {
 	 */
 	@Transactional 
 	@Modifying
-	@Query(value= "INSERT INTO tipo_producto (tipo) VALUES(:tipo, 1)", nativeQuery = true)
+	@Query(value= "INSERT INTO tipo_producto (tipo, status) VALUES(:tipo, 1)", nativeQuery = true)
 	void createTipoProducto(@Param("tipo") String tipo); // nos devolvera el TipoProducto que estamos insertando
 	
 	/**

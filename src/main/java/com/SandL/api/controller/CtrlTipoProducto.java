@@ -53,8 +53,11 @@ public class CtrlTipoProducto{
      * @return una producto de nuestro inventario
      */
     @GetMapping("/{idTipoProducto}")
-    public ResponseEntity<TipoProducto> getTipoProducto(@PathVariable Integer idTipoProducto) {
-        return new ResponseEntity<>(svc.getTipoProducto(idTipoProducto), HttpStatus.OK);
+    public ResponseEntity<?> getTipoProducto(@PathVariable Integer idTipoProducto) {
+    	TipoProducto tipoProductoAux = svc.getTipoProducto(idTipoProducto);
+    	if(tipoProductoAux == null)
+    		return new ResponseEntity<>("No existe un tipo ingrediente con ese id", HttpStatus.OK);
+        return new ResponseEntity<>(tipoProductoAux, HttpStatus.OK);
     }
     
     // ("/guardar")
