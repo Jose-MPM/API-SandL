@@ -35,20 +35,12 @@ SandL=# exit
 ```
 
 - Para usar en la DB
-
 ```
 ntory@flavor:~/Escritorio/CC/20241/Technologies-for-internet-dev/API-SandL$ psql -h localhost -U main -d SandL -p 32124
 Contraseña para usuario main: 
 psql (15.5 (Debian 15.5-0+deb12u1), servidor 14.9)
 Digite «help» para obtener ayuda.
 
-SandL=# \dt
-No se encontró ninguna relación.
-SandL=# \dt;
-No se encontró ninguna relación.
-SandL=# \d;
-orden \d; no válida
-Digite \? para obtener ayuda.
 SandL=# \d
 No se encontró ninguna relación.
 SandL=# \d
@@ -81,14 +73,30 @@ SandL-# ;
  id_tipo_producto | status | tipo 
 ------------------+--------+------
 (0 filas)
-
-SandL=# select * from tipo_producto
-;
- id_tipo_producto | status | tipo 
-------------------+--------+------
-(0 filas)
-
 SandL=# 
+```
+
+- Como se vería nuestra base tras hacer una ejecución de cada método que forma parte del CRUD.
+```
+SandL=# select * from tipo_producto;
+ id_tipo_producto | status |     tipo      
+------------------+--------+---------------
+                1 |      1 | Perecedero
+                2 |      1 | Para empacar
+                3 |      1 | No perecedero
+                4 |      1 | Desechables
+(4 filas)
+
+SandL=# select * from tipo_producto;
+ id_tipo_producto | status |      tipo      
+------------------+--------+----------------
+                1 |      1 | Perecedero
+                2 |      1 | Para empacar
+                4 |      1 | Desechables
+                3 |      0 | Para almacenar
+(4 filas)
+
+SandL=#
 ```
 
 También se puede utilizar cualquier otro servidor que al que se tenga acceso, solo hay que
