@@ -1,5 +1,12 @@
 # API-SandL
-API REST to Salas and Life website
+
+## Desarrollé el back-end de SyL, un sitio de ensaladas.
+
+API REST para nuestro sitio de ensaladas, siguiendo principios de escalabilidad y seguridad. Esta API REST facilita una separación clara entre el front-end y el back-end, permitiendo una gestión eficiente del inventario y operaciones CRUD para los productos. Utilicé Java con Spring Boot para implementar una arquitectura desacoplada, asegurando reusabilidad y flexibilidad en la integración de diversos clientes. Además, se aplicaron prácticas de seguridad estándar para la verificación de las entradas, previniendo SQLi.
+
+# Documentación principal junto con la muestra de como consumir los endpoints
+
+* [Ver Documentación y el consumo de los endpoints en Google Drive](https://docs.google.com/document/d/10DyenawPkvvWHt3waOYHon-YulO3cR84jjAHlTgjZhM/edit?usp=sharing)https://docs.google.com/document/d/1AP4hGy2koKtb5oykxTQYHy7wD1FAkfrwggVQe_ba_-I/edit?usp=sharing
 
 ## Configurar Base de datos
 
