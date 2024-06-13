@@ -6,7 +6,7 @@ API REST para nuestro sitio de ensaladas, siguiendo principios de escalabilidad 
 
 # Documentación principal junto con la muestra de como consumir los endpoints
 
-* [Ver Documentación y el consumo de los endpoints en Google Drive](https://docs.google.com/document/d/10DyenawPkvvWHt3waOYHon-YulO3cR84jjAHlTgjZhM/edit?usp=sharing)https://docs.google.com/document/d/1AP4hGy2koKtb5oykxTQYHy7wD1FAkfrwggVQe_ba_-I/edit?usp=sharing
+* [Ver Documentación y el consumo de los endpoints en Google Drive](https://docs.google.com/document/d/10DyenawPkvvWHt3waOYHon-YulO3cR84jjAHlTgjZhM/edit?usp=sharing)
 
 ## Configurar Base de datos
 
