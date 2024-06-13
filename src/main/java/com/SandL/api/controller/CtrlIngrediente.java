@@ -17,48 +17,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.SandL.api.entity.Ingrediente;
 import com.SandL.api.entity.TipoProducto;
-import com.SandL.api.service.SvcTipoProducto;
+import com.SandL.api.service.SvcIngrediente;
 
 import jakarta.validation.Valid;
 
-//@CrossOrigin(origins= {"http://localhost:8080"})
 @RestController
-@RequestMapping("/tipoProducto")
-public class CtrlTipoProducto{
-	// encargado de recibir las operaciones y validar que los datos requeridos en las peticiones seán correctos
-	// el repo se encarga de toda la parte de las DB para extraer la info necesaria
-	// pero quien decide el como y el orden es el service
-	// serv 
+@RequestMapping("/inventario")
+public class CtrlIngrediente {
 	
-    @Autowired
-    private SvcTipoProducto svc;
-
-    //@Autowired
-    //private TipoProductoService tipoProductoService;
-
-    //private final Logger logger = LogManager.getLogger(InventarioController.class);
-
-    /**
+	@Autowired
+    private SvcIngrediente svc;
+	
+	
+	/**
 	 * Regresa una lista con todos los productos a las peticiones get recibidas en:
-	 * /api/inventario
+	 * /inventario
 	 * @return una lista con todos los tipos productos.
 	 */
 	@GetMapping
-	public ResponseEntity<List<TipoProducto>> getTiposProductos() throws Exception{
-		return new ResponseEntity<>(svc.getTiposProductos(), HttpStatus.OK);
+	public ResponseEntity<List<Ingrediente>> getIngredientes() throws Exception{
+		svc.insertarIngredienteEjemplo();
+		return new ResponseEntity<>(svc.getIngredientes(), HttpStatus.OK);
 	}
 
     /**
-     * Regresa una producto de nuestro inventario.
+     * Regresa una INGREDIENTE de nuestro inventario.
      * @return una producto de nuestro inventario
      */
-    @GetMapping("/{idTipoProducto}")
-    public ResponseEntity<?> getTipoProducto(@PathVariable Integer idTipoProducto) {
-    	TipoProducto tipoProductoAux = svc.getTipoProducto(idTipoProducto);
-    	if(tipoProductoAux == null)
+    @GetMapping("/{id_Ingrediente}")
+    public ResponseEntity<?> getIngrediente(@PathVariable Integer id_Ingrediente) {
+    	Ingrediente ingredienteAux = svc.getIngrediente(id_Ingrediente);
+    	if(ingredienteAux == null)
     		return new ResponseEntity<>("No existe un tipo ingrediente con ese id", HttpStatus.OK);
-        return new ResponseEntity<>(tipoProductoAux, HttpStatus.OK);
+        return new ResponseEntity<>(ingredienteAux, HttpStatus.OK);
     }
     
     // ("/guardar")
@@ -66,7 +59,7 @@ public class CtrlTipoProducto{
     // EL response Entity nos permite responder un request, agregar un header y un body
     // BildingResult nos permite aplicar un validador y acceder a los errores generados
     @PostMapping
-    public ResponseEntity<?> createTipoProducto(@Valid @RequestBody TipoProducto tipoProducto, BindingResult bindingResult) {
+    public ResponseEntity<?> createIngrediente(@Valid @RequestBody Ingrediente ingrediente, BindingResult bindingResult) {
     	if(bindingResult.hasErrors()) {
 			Map<String,Object> response = new HashMap<>();
 			response.put("mensaje", "Error en los datos incluidos en el Json");		
@@ -77,14 +70,14 @@ public class CtrlTipoProducto{
         // codigo correspondiente para insertar estos datos en la base de datos
     	
         response.put("mensaje", "El producto ha sido agregado a nuestro inventario.");
-		return new ResponseEntity<>(svc.createTipoProducto(tipoProducto), HttpStatus.OK);
+		return new ResponseEntity<>(svc.createIngrediente(ingrediente), HttpStatus.OK);
 		//Map<String,Object>
     }
 
     // put nos indica que vamos a actualizar
-    @PutMapping("/{idTipoProducto}")
-    public ResponseEntity<?> updateTipoProducto(@PathVariable Integer idTipoProducto, 
-    											@Valid @RequestBody TipoProducto tipoProducto, 
+    @PutMapping("/{id_Ingrediente}")
+    public ResponseEntity<?> updateIngrediente(@PathVariable Integer id_Ingrediente, 
+    											@Valid @RequestBody Ingrediente ingrediente, 
     											BindingResult bindingResult) {
        if(bindingResult.hasErrors()) {
             Map<String,Object> response = new HashMap<>();
@@ -97,18 +90,17 @@ public class CtrlTipoProducto{
         // si existe lo actualiza, si no debemos enviar un mensaje de error
         //TipoProducto tipoProductoAEditar = svc.updateTipoProducto(idTipoProducto, tipoProducto);
         //response.put("mensaje", "El producto ha sido actualizado a nuestro inventario con exito.");
-        return new ResponseEntity<>(svc.updateTipoProducto(idTipoProducto, tipoProducto), HttpStatus.OK);
+        return new ResponseEntity<>(svc.updateIngrediente(ingrediente, id_Ingrediente), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{idTipoProducto}")
+    @DeleteMapping("/{id_ingrediente}")
 	//@ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<String> deleteTipoProducto(@PathVariable Integer idTipoProducto) {
+    public ResponseEntity<String> deleteIngrediente(@PathVariable Integer id_ingrediente) {
         //Map<String,Object> response = new HashMap<>();
         //la aplicacion como tal no debería de permitirnos borrar por completo algo, solo desactivar
         // codigo para validar que hay existe este producto con este id
     	// tomar en cuenta que si tenemos un ingrediente con un tipo que se quiere borrar no se va a poder 
         //response.put("mensaje", "El producto ha sido eliminado con exito.");
-    	return new ResponseEntity<>(svc.deleteTipoProducto(idTipoProducto), HttpStatus.OK);
+    	return new ResponseEntity<>(svc.deleteIngrediente(id_ingrediente), HttpStatus.OK);
     }
 }
-
